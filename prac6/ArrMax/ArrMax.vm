@@ -2,50 +2,47 @@
 // a & b are both supplied as arguments
 
 // Put your code here.
+function ArrMax.arrMax 2
+    push argument 0  
+    pop pointer 1   
+    push that 0     
+    pop local 0     
 
-function ArrMax.arrMax 0
+    push constant 1
+    pop local 1     
 
-  push argument 0           
-  pop pointer 1             
-  push that 0               
-  pop local 0               
+label LOOP
+    push local 1
+    push argument 1  
+    eq
+    if-goto END
 
-  push constant 1
-  pop local 1               
-
-label LOOP_START            
-  // Check if index < n (loop condition)
-  push local 1              
-  push argument 1           
-  lt                        
-  if-goto CONTINUE_LOOP
-  goto END_LOOP             
-
-label CONTINUE_LOOP
-
-  push argument 0           
-  push local 1              
-  add                       
-  pop pointer 1            
-  push that 0               
-  
-  push local 0             
-  gt                        
-  if-goto UPDATE_MAX
-
-  push local 1
-  push constant 1
-  add
-  pop local 1
-  goto LOOP_START          
+    push argument 0
+    push local 1
+    add
+    pop pointer 1    
+    push that 0      
+    push local 0    
+    gt              
+    if-goto UPDATE_MAX
+    goto CONTINUE
 
 label UPDATE_MAX
-  
-  push that 0               
-  pop local 0               
-  goto LOOP_START           
+    push argument 0
+    push local 1
+    add
+    pop pointer 1
+    push that 0
+    pop local 0     
 
-label END_LOOP
- 
-  push local 0
-  return
+label CONTINUE
+    push local 1
+    push constant 1
+    add
+    pop local 1
+
+    goto LOOP
+
+label END
+    push local 0
+    return
